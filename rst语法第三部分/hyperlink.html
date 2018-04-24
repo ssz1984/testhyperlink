@@ -1,0 +1,178 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>超链接（hyperlink） &#8212; hpl&amp;tb 1.0 文档</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="表格（tables）" href="tables.html" />
+    <link rel="prev" title="Welcome to hpltb’s documentation!" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="hyperlink">
+<h1>超链接（hyperlink）<a class="headerlink" href="#hyperlink" title="永久链接至标题">¶</a></h1>
+<div class="section" id="external-hyperlink">
+<h2>外部链接（external hyperlink）<a class="headerlink" href="#external-hyperlink" title="永久链接至标题">¶</a></h2>
+<p>方式一:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>我们推荐您点击，参考网站_.
+
+ .. _参考网站:http://www.python.org/
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>页面效果：</dt>
+<dd><dl class="first last docutils">
+<dt>我们推荐您点击，<a class="reference external" href="http://www.python.org/">参考网站</a>.</dt>
+<dd></dd>
+</dl>
+</dd>
+<dt>方式二：在链接名后直接列出网址，如下</dt>
+<dd>我们推荐您点击，<em>参考网站</em> &lt;<a class="reference external" href="http://www.python.org/">http://www.python.org/</a>&gt;。</dd>
+</dl>
+</div>
+<div class="section" id="internal-hyperlink">
+<h2>内部链接（internal hyperlink）<a class="headerlink" href="#internal-hyperlink" title="永久链接至标题">¶</a></h2>
+<p>示例:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Internal</span> <span class="n">crossreferences</span><span class="p">,</span> <span class="n">like</span> <span class="n">example_</span><span class="o">.</span>
+
+<span class="o">..</span> <span class="n">_example</span><span class="p">:</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">example</span> <span class="n">crossreference</span> <span class="n">target</span><span class="o">.</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>页面效果：</dt>
+<dd><p class="first">Internal crossreferences, like <a class="reference internal" href="#example">example</a>.</p>
+<p class="last" id="example">This is an example crossreference target.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="indirect-hyperlink">
+<h2>间接超链接（indirect hyperlink）<a class="headerlink" href="#indirect-hyperlink" title="永久链接至标题">¶</a></h2>
+<p>间接超链接在其链接块中具有链接指向的作用。 在以下示例中，目标“one”间接引用目标“two”所引用的内容；目标“two”引用目标为“three”，一个内部超链接目标。 实际上三者引用的是同一内容。示例:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">_one</span><span class="p">:</span> <span class="n">two_</span>
+<span class="o">..</span> <span class="n">_two</span><span class="p">:</span> <span class="n">three_</span>
+<span class="o">..</span> <span class="n">_three</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>说明：
+如果在链接块中使用了短语引用（phrase-reference），则必须用反引号将它括起来。 与外部超链接一样，间接超链接可以从下一行或显式标记的同一行开始。 它也可以分成多行，此时前面要加空白之后该行才能被标准化。</p>
+</div>
+<div class="section" id="implicit-hyperlink">
+<h2>隐式链接（implicit hyperlink）<a class="headerlink" href="#implicit-hyperlink" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id2">
+<h3>隐式链接是指章节标题、脚注和引文自动生成的超链接，即标题文本或脚注/引用标签用作超链接名称。<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<p>示例:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>Titles are targets, too
+-------------------------
+Implict references, like `Titles are targets, too`_.
+</pre></div>
+</div>
+<p>页面效果：</p>
+</div>
+<div class="section" id="titles-are-targets-too">
+<h3>Titles are targets, too<a class="headerlink" href="#titles-are-targets-too" title="永久链接至标题">¶</a></h3>
+<p>Implict references, like <a class="reference internal" href="#titles-are-targets-too">Titles are targets, too</a>.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">hpl&tb</a></h1>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+<p class="caption"><span class="caption-text">第三部分:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">超链接（hyperlink）</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#external-hyperlink">外部链接（external hyperlink）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#internal-hyperlink">内部链接（internal hyperlink）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#indirect-hyperlink">间接超链接（indirect hyperlink）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implicit-hyperlink">隐式链接（implicit hyperlink）</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tables.html">表格（tables）</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../index.html" title="上一章">Welcome to hpltb’s documentation!</a></li>
+      <li>Next: <a href="tables.html" title="下一章">表格（tables）</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>快速搜索</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="转向" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, wu.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../_sources/rst语法第三部分/hyperlink.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

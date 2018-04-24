@@ -1,0 +1,227 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>表格（tables） &#8212; hpl&amp;tb 1.0 文档</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="prev" title="超链接（hyperlink）" href="hyperlink.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tables">
+<h1>表格（tables）<a class="headerlink" href="#tables" title="永久链接至标题">¶</a></h1>
+<p>ReStructuredText提供两种形式的表格：网格表和简易表。网格表比简易表功能更完善；后者更容易创建，但没有行跨度等功能。</p>
+<p>表格前后需要空行。 表格的左边应与前面文本块的左边缘对齐；如果缩进，则代表其是前文本块的一部分。单独的每个表格都是一个微型文档，顶部和底部单元格边界用作分隔空白行。 每个单元格可以包含多个主体元素。</p>
+<div class="section" id="grid-tables">
+<h2>网格表（grid tables）<a class="headerlink" href="#grid-tables" title="永久链接至标题">¶</a></h2>
+<p>网格表是通过一种类似“ASCII art”的网格来表示数据，故而其功能更加完善。它可容纳任意单元格内容（主体元素）以及行和列跨度等。 但是对于简单的数据集而言网格表可能比较麻烦。</p>
+<p>网格表使用由“ - ”、“=”、“|”和“+”组成的可视化网格进行描述。 连字符（“ - ”）用于水平线（行分隔符）。 等号（“=”）可用于从表体分离可选标题行。 竖线（“|”）用于竖线（列分隔符）。 加号（“+”）用于水平线和垂直线的交点。示例:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+------------------------+------------+----------+----------+</span>
+<span class="o">|</span> <span class="n">Header</span> <span class="n">row</span><span class="p">,</span> <span class="n">column</span> <span class="mi">1</span>   <span class="o">|</span> <span class="n">Header</span> <span class="mi">2</span>   <span class="o">|</span> <span class="n">Header</span> <span class="mi">3</span> <span class="o">|</span> <span class="n">Header</span> <span class="mi">4</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">(</span><span class="n">header</span> <span class="n">rows</span> <span class="n">optional</span><span class="p">)</span> <span class="o">|</span>            <span class="o">|</span>          <span class="o">|</span>          <span class="o">|</span>
+<span class="o">+========================+============+==========+==========+</span>
+<span class="o">|</span> <span class="n">body</span> <span class="n">row</span> <span class="mi">1</span><span class="p">,</span> <span class="n">column</span> <span class="mi">1</span>   <span class="o">|</span> <span class="n">column</span> <span class="mi">2</span>   <span class="o">|</span> <span class="n">column</span> <span class="mi">3</span> <span class="o">|</span> <span class="n">column</span> <span class="mi">4</span> <span class="o">|</span>
+<span class="o">+------------------------+------------+----------+----------+</span>
+<span class="o">|</span> <span class="n">body</span> <span class="n">row</span> <span class="mi">2</span>             <span class="o">|</span> <span class="n">Cells</span> <span class="n">may</span> <span class="n">span</span> <span class="n">columns</span><span class="o">.</span>          <span class="o">|</span>
+<span class="o">+------------------------+------------+---------------------+</span>
+<span class="o">|</span> <span class="n">body</span> <span class="n">row</span> <span class="mi">3</span>             <span class="o">|</span> <span class="n">Cells</span> <span class="n">may</span>  <span class="o">|</span> <span class="o">-</span> <span class="n">Table</span> <span class="n">cells</span>       <span class="o">|</span>
+<span class="o">+------------------------+</span> <span class="n">span</span> <span class="n">rows</span><span class="o">.</span> <span class="o">|</span> <span class="o">-</span> <span class="n">contain</span>           <span class="o">|</span>
+<span class="o">|</span> <span class="n">body</span> <span class="n">row</span> <span class="mi">4</span>             <span class="o">|</span>            <span class="o">|</span> <span class="o">-</span> <span class="n">body</span> <span class="n">elements</span><span class="o">.</span>    <span class="o">|</span>
+<span class="o">+------------------------+------------+---------------------+</span>
+</pre></div>
+</div>
+<p>页面效果：</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="43%" />
+<col width="21%" />
+<col width="18%" />
+<col width="18%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Header row, column 1
+(header rows optional)</th>
+<th class="head">Header 2</th>
+<th class="head">Header 3</th>
+<th class="head">Header 4</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>body row 1, column 1</td>
+<td>column 2</td>
+<td>column 3</td>
+<td>column 4</td>
+</tr>
+<tr class="row-odd"><td>body row 2</td>
+<td colspan="3">Cells may span columns.</td>
+</tr>
+<tr class="row-even"><td>body row 3</td>
+<td rowspan="2">Cells may
+span rows.</td>
+<td colspan="2" rowspan="2"><ul class="first last simple">
+<li>Table cells</li>
+<li>contain</li>
+<li>body elements.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>body row 4</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>注意：如果合并单元格导致表格不对齐，调试时可以在对应行下方空一行，或该行内容前空一格。</p>
+</div>
+<div class="section" id="simple-tables">
+<h2>简易表（simple tables）<a class="headerlink" href="#simple-tables" title="永久链接至标题">¶</a></h2>
+<p>简易表紧凑而易于使用，但面向行的表示功能有限。它的大多数单元格可以表示任意的主体元素，不过单元格内容通常都是单个段落。它支持多行行（不包括第一列）和列跨度。</p>
+<p>简易表用“=”和“ - ”字符组成水平边框来描述表格。等号（“=”）用于顶部和底部表格边界，并将可选标题行与表格主体分开。连字符（“ - ”）用于通过给连接列加下划线来指示单个行中的列跨度，并且可以选择性地用于可视地分隔行。</p>
+<p>简易表从等号的顶部边界开始，每个列边界有一个或多个空格（建议使用不少于两个）。上边框必须完整描述所有表格列；表格中必须至少有两列以区分节头。顶部边框可以跟着标题行，最后一个可选标题行用“=”加下划线，同样在列边界留有空格。标题行分隔符下面可能没有空白行，那是表格的底部边界，由“=”下划线组成。</p>
+<p>示例是一个真值表，一个包含一个标题行和四个正文行的三列表:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">=====</span>  <span class="o">=====</span>  <span class="o">=======</span>
+ <span class="n">A</span>      <span class="n">B</span>    <span class="n">A</span> <span class="ow">and</span> <span class="n">B</span>
+<span class="o">=====</span>  <span class="o">=====</span>  <span class="o">=======</span>
+<span class="kc">False</span>  <span class="kc">False</span>  <span class="kc">False</span>
+<span class="kc">True</span>   <span class="kc">False</span>  <span class="kc">False</span>
+<span class="kc">False</span>  <span class="kc">True</span>   <span class="kc">False</span>
+<span class="kc">True</span>   <span class="kc">True</span>   <span class="kc">True</span>
+<span class="o">=====</span>  <span class="o">=====</span>  <span class="o">=======</span>
+</pre></div>
+</div>
+<p>页面效果：</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="29%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">A</th>
+<th class="head">B</th>
+<th class="head">A and B</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="row-odd"><td>True</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="row-even"><td>False</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr class="row-odd"><td>True</td>
+<td>True</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>注意：表格元素必须严格对齐，否则调试时会报错。</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">hpl&tb</a></h1>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+<p class="caption"><span class="caption-text">第三部分:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="hyperlink.html">超链接（hyperlink）</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">表格（tables）</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#grid-tables">网格表（grid tables）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simple-tables">简易表（simple tables）</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="hyperlink.html" title="上一章">超链接（hyperlink）</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>快速搜索</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="转向" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, wu.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../_sources/rst语法第三部分/tables.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
